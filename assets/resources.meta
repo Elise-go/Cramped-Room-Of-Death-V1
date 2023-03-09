@@ -9,7 +9,10 @@
     "isBundle": true,
     "bundleName": "resources",
     "priority": 8,
-    "compressionType": {},
+    "compressionType": {
+      "web-desktop": "merge_all_json",
+      "web-mobile": "merge_all_json"
+    },
     "isRemoteBundle": {}
   }
 }
