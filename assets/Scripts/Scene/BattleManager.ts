@@ -29,7 +29,7 @@ export class BattleManager extends Component {
     private smokeLayer: Node | null = null;
     private inited = false;
 
-    onLoad(){
+    onLoad() {
         // 绑定事件
         EventManager.Instance.onUnclear(EVENT_ENUM.NEXT_LEVEL, this.nextLevel, this);
         EventManager.Instance.onUnclear(EVENT_ENUM.SHOW_SMOKE, this.generateSmoke, this);
@@ -60,39 +60,42 @@ export class BattleManager extends Component {
         const newLevel = levels[`level${DataManager.Instance.levelIndex}`];
         if (newLevel) {
 
-        // 效果：黑幕渐渐显现
-        if (this.inited) {
-            await FaderManager.Instance.fadeIn();
-        } else {
-            FaderManager.Instance.mask();
-            this.inited = true;
-        }
-        
-        // RESTART_LEVEL事件让当前关卡重新加载
-        this.clearLevel();
+            // 效果：黑幕渐渐显现
+            if (this.inited) {
+                await FaderManager.Instance.fadeIn();
+            } else {
+                FaderManager.Instance.mask();
+                this.inited = true;
+            }
 
-        this.level = newLevel;
-        DataManager.Instance.playerInfo = this.level.player;
-        DataManager.Instance.mapInfo = this.level.mapInfo;
-        DataManager.Instance.mapRowCount = this.level.mapInfo.length || 0;
-        DataManager.Instance.mapColumnCount = this.level.mapInfo[0].length || 0;
+            // RESTART_LEVEL事件让当前关卡重新加载
+            this.clearLevel();
 
-        this.stageAdaptPos();
-        console.log(this.node.getPosition);
+            this.level = newLevel;
+            DataManager.Instance.playerInfo = this.level.player;
+            DataManager.Instance.mapInfo = this.level.mapInfo;
+            DataManager.Instance.mapRowCount = this.level.mapInfo.length || 0;
+            DataManager.Instance.mapColumnCount = this.level.mapInfo[0].length || 0;
 
-        // 注意：这里的渲染顺序决定了UI节点的遮挡关系
-        await this.generateTileMap(),
-        await this.generateBursts(),
-        await this.generateSpikes(),
-        await this.generateSmokeLayer(),
-        await this.generateDoor(),
-        await this.generateEnemies(),
-        await this.generatePlayer()
+            this.stageAdaptPos();
 
-        EventManager.Instance.on(EVENT_ENUM.PLAYER_MOVE_END, this.checkArrived, this);
+            // 注意：这里的渲染顺序决定了UI节点的遮挡关系
+            await this.generateTileMap();
+            if (this.level.bursts) {
+                await this.generateBursts();
+            }
+            if (this.level.spikes) {
+                await this.generateSpikes();
+            }
+            await this.generateSmokeLayer();
+            await this.generateDoor();
+            await this.generateEnemies();
+            await this.generatePlayer();
 
-        // 效果：等所有资源都加载完后，黑幕渐渐消失
-        await FaderManager.Instance.fadeOut();
+            EventManager.Instance.on(EVENT_ENUM.PLAYER_MOVE_END, this.checkArrived, this);
+
+            // 效果：等所有资源都加载完后，黑幕渐渐消失
+            await FaderManager.Instance.fadeOut();
 
         } else {
             // 为保险起见，若拿不到场景就回到start界面
@@ -108,7 +111,7 @@ export class BattleManager extends Component {
 
     clearLevel() {
         this.stage.destroyAllChildren();
-       //切换关卡时要移除eventDic里的所有元素,否则切换到下一关时this指向会混乱和报错
+        //切换关卡时要移除eventDic里的所有元素,否则切换到下一关时this指向会混乱和报错
         EventManager.Instance.clear();
         DataManager.Instance.reset();
     }
@@ -132,7 +135,7 @@ export class BattleManager extends Component {
         const { x: doorX, y: doorY, state: doorState } = DataManager.Instance.door!;
         if (doorState === ENTITY_STATE_ENUM.DEATH && playerX === doorX && playerY === doorY) {
             EventManager.Instance.emit(EVENT_ENUM.NEXT_LEVEL);
-            
+
         }
     }
 
@@ -266,9 +269,9 @@ export class BattleManager extends Component {
                 type: DataManager.Instance.player!.type,
                 direction: DataManager.Instance.player!.direction,
                 state: // 除了 DEATH 和 AIRDEATH状态，其他状态结束后都是回到IDLE状态的
-                DataManager.Instance.player!.state === ENTITY_STATE_ENUM.DEATH
-                ||DataManager.Instance.player!.state === ENTITY_STATE_ENUM.AIRDEATH?
-                DataManager.Instance.player!.state:ENTITY_STATE_ENUM.IDLE
+                    DataManager.Instance.player!.state === ENTITY_STATE_ENUM.DEATH
+                        || DataManager.Instance.player!.state === ENTITY_STATE_ENUM.AIRDEATH ?
+                        DataManager.Instance.player!.state : ENTITY_STATE_ENUM.IDLE
             },
             door: {
                 x: DataManager.Instance.door!.x,
@@ -311,10 +314,10 @@ export class BattleManager extends Component {
             DataManager.Instance.player!.x = DataManager.Instance.player!.targetX = item.player.x;
             DataManager.Instance.player!.y = DataManager.Instance.player!.targetY = item.player.y;
             DataManager.Instance.player!.direction = item.player.direction;
-            if(DataManager.Instance.player!.state !== ENTITY_STATE_ENUM.IDLE){
+            if (DataManager.Instance.player!.state !== ENTITY_STATE_ENUM.IDLE) {
                 DataManager.Instance.player!.state = item.player.state;
             }
-            
+
 
             // 门数据
             DataManager.Instance.door!.state = item.door.state;

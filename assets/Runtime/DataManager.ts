@@ -24,17 +24,17 @@ export default class DataManager {
   }
 
   // 由 TileMapManager.ts 传入
-  tileInfo: Array<Array<TileManager>>= [];
+  tileInfo: Array<Array<TileManager>> = [];
   //由 BattleManager.ts---initLevel()传入
-  levelIndex: number = 7;
+  levelIndex: number = 1;
   mapInfo: Array<Array<ITile>> = [];
   playerInfo: IEntity | undefined = undefined;
   mapRowCount: number = 0;
   mapColumnCount: number = 0;
   // 由 BattleManager.ts---初始化各节点的 Manager后传入
-  player: PlayerManager| undefined = undefined;
+  player: PlayerManager | undefined = undefined;
   enemies: EnemyManager[] = [];
-  door: DoorManager| undefined = undefined;;
+  door: DoorManager | undefined = undefined;;
   bursts: BurstManager[] = [];
   spikes: SpikesManager[] = [];
   smokes: SmokeManager[] = [];
