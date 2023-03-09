@@ -1,5 +1,5 @@
 import { IEntity, ILevel, ISpikes } from ".";
-import { DIRECTION_ENUM, ENTITY_STATE_ENUM, ENTITY_TYPE_ENUM, TILE_TYPE_ENUM } from "../Enums";
+import { DIRECTION_ENUM, ENTITY_STATE_ENUM, ENTITY_TYPE_ENUM, SPIKES_TYPE_ENUM, TILE_TYPE_ENUM } from "../Enums";
 
 const mapInfo = [
   [
@@ -476,37 +476,37 @@ const spikes: Array<ISpikes> = [
   {
     x: 4,
     y: 8,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 4,
     y: 9,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 6,
     y: 3,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 7,
     y: 3,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 6,
     y: 5,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 7,
     y: 5,
-    type: ENTITY_TYPE_ENUM.SPIKES_ONE,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   }
 ];

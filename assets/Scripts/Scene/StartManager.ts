@@ -8,13 +8,13 @@ const { ccclass, property } = _decorator;
 
 @ccclass('StartManager')
 export class StartManager extends Component {
-    onLoad(){
+    onLoad() {
         FaderManager.Instance.fadeOut(1000);
-        this.node.once(NodeEventType.TOUCH_END,this.handleStart,this);
+        this.node.once(NodeEventType.TOUCH_END, this.handleStart, this);
     }
 
-    async handleStart(){
-        await FaderManager.Instance.fadeIn(300);
+    async handleStart() {
+        await FaderManager.Instance.fadeIn(200);
         DataManager.Instance.levelIndex = 1;
         director.loadScene(SCREEN_ENUM.Battle);
 

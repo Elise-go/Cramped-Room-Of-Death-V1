@@ -2,7 +2,8 @@
 import { _decorator, Animation } from 'cc';
 import { EntityManager } from '../../Base/EntityManager';
 import State from '../../Base/State';
-import { getInitParamsTrigger, StateMachine } from '../../Base/StateMachine';
+import { StateMachine } from '../../Base/StateMachine';
+import { SubState } from '../../Base/SubState';
 import { ENTITY_STATE_ENUM, PARAMS_NAME_ENUM } from '../../Enums';
 
 
@@ -11,48 +12,26 @@ const BASE_URL = 'texture/burst';
 
 @ccclass('BurstStateMachine')
 export class BurstStateMachine extends StateMachine {
+    private _currentState!: State
+    subStates: Map<string, State> = new Map();
 
-    async init() { 
+    async init() {
         this.animationComponent = this.node.addComponent(Animation);
-        this.initParams();
-        this.initStateMachines();
+        this.initSubStates();
         await Promise.all(this.waitingList);
     }
 
-    initParams() {
-        this.params.set(PARAMS_NAME_ENUM.IDLE, getInitParamsTrigger());
-        this.params.set(PARAMS_NAME_ENUM.ATTACK, getInitParamsTrigger());
-        this.params.set(PARAMS_NAME_ENUM.DEATH, getInitParamsTrigger());
-        
+
+    initSubStates() {
+        this.subStates.set(PARAMS_NAME_ENUM.IDLE, new State(this, `${BASE_URL}/idle`));
+        this.subStates.set(PARAMS_NAME_ENUM.ATTACK, new State(this, `${BASE_URL}/attack`));
+        this.subStates.set(PARAMS_NAME_ENUM.DEATH, new State(this, `${BASE_URL}/death`));
     }
 
-    initStateMachines() {
-        this.stateMachines.set(PARAMS_NAME_ENUM.IDLE, new State(this, `${BASE_URL}/idle`));
-        this.stateMachines.set(PARAMS_NAME_ENUM.ATTACK, new State(this, `${BASE_URL}/attack`)); 
-        this.stateMachines.set(PARAMS_NAME_ENUM.DEATH, new State(this, `${BASE_URL}/death`));        
+    run(paramsName: string) {
+        this._currentState = this.subStates.get(paramsName)!;
+        this._currentState.run();
     }
-
-
-    run() {
-        switch (this.currentState) {     
-            case this.stateMachines.get(PARAMS_NAME_ENUM.IDLE):
-            case this.stateMachines.get(PARAMS_NAME_ENUM.ATTACK):
-            case this.stateMachines.get(PARAMS_NAME_ENUM.DEATH):
-
-                if (this.params.get(PARAMS_NAME_ENUM.IDLE).value) {
-                    this.currentState = this.stateMachines.get(PARAMS_NAME_ENUM.IDLE); 
-                }else if(this.params.get(PARAMS_NAME_ENUM.ATTACK).value){
-                    this.currentState = this.stateMachines.get(PARAMS_NAME_ENUM.ATTACK);
-                }else if(this.params.get(PARAMS_NAME_ENUM.DEATH).value){
-                    this.currentState = this.stateMachines.get(PARAMS_NAME_ENUM.DEATH);
-                }
-                break;
-            default:
-                this.currentState = this.stateMachines.get(PARAMS_NAME_ENUM.IDLE);
-        }
-    }
-
-    
 
 }
 

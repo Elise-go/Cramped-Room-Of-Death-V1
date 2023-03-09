@@ -2,7 +2,15 @@
   "general": {
     "designResolution": {
       "width": 640,
-      "height": 960
+      "height": 960,
+      "fitHeight": false,
+      "fitWidth": true
+    }
+  },
+  "__version__": "1.0.4",
+  "fbx": {
+    "legacyFbxImporter": {
+      "visible": true
     }
   }
 }

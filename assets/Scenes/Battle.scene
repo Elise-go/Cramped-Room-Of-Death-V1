@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "",
+    "_name": "Battle",
     "_objFlags": 0,
     "_native": "",
     "scene": {
@@ -21,6 +21,33 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
     "autoReleaseAssets": false,
     "_globals": {
       "__id__": 73
@@ -86,6 +113,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -129,6 +157,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -151,7 +180,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 480,
+    "_orthoHeight": 479.99999999999994,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -221,6 +250,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -358,7 +388,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 388,
+      "y": 390,
       "z": 0
     },
     "_lrot": {
@@ -374,6 +404,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -406,7 +437,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -154,
+      "x": -140,
       "y": 0,
       "z": 0
     },
@@ -419,10 +450,11 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.47,
-      "y": 0.47,
+      "x": 0.4,
+      "y": 0.4,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -593,10 +625,11 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.47,
-      "y": 0.47,
+      "x": 0.4,
+      "y": 0.4,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -754,7 +787,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 154,
+      "x": 140,
       "y": 0,
       "z": 0
     },
@@ -767,10 +800,11 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.47,
-      "y": 0.47,
+      "x": 0.4,
+      "y": 0.4,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -916,7 +950,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 402,
+      "width": 360,
       "height": 100
     },
     "_anchorPoint": {
@@ -961,7 +995,7 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 42,
+    "_top": 40,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -1054,7 +1088,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -300,
+      "y": -310,
       "z": 0
     },
     "_lrot": {
@@ -1070,6 +1104,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1119,6 +1154,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1293,6 +1329,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1467,6 +1504,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1641,6 +1679,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1815,6 +1854,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -1989,6 +2029,7 @@
       "y": 0.37,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -2189,7 +2230,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 70,
+    "_bottom": 60,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -2239,7 +2280,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -442.8,
+      "y": -449.8,
       "z": 0
     },
     "_lrot": {
@@ -2255,6 +2296,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -2275,7 +2317,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 271.54,
+      "width": 231.1,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -2304,11 +2346,11 @@
       "b": 204,
       "a": 255
     },
-    "_string": "Cramped Room Of Death V.1",
+    "_string": "Cramped Room Of Death V1",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 0,
@@ -2317,7 +2359,7 @@
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
-    "_isBold": true,
+    "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
@@ -2337,7 +2379,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 12,
+    "_bottom": 5,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -2444,7 +2486,11 @@
     },
     "octree": {
       "__id__": 78
-    }
+    },
+    "lightProbeInfo": {
+      "__id__": 79
+    },
+    "bakedWithStationaryMainLight": false
   },
   {
     "__type__": "cc.AmbientInfo",
@@ -2569,5 +2615,16 @@
       "z": 1024
     },
     "_depth": 8
+  },
+  {
+    "__type__": "cc.LightProbeInfo",
+    "_giScale": 1,
+    "_giSamples": 1024,
+    "_bounces": 2,
+    "_reduceRinging": 0,
+    "_showProbe": true,
+    "_showWireframe": true,
+    "_showConvex": false,
+    "_data": null
   }
 ]

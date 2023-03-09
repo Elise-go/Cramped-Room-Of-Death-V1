@@ -104,12 +104,13 @@
       "base",
       "gfx-webgl",
       "gfx-webgl2",
+      "light-probe",
       "marionette",
       "profiler",
       "skeletal-animation",
       "tween",
       "ui",
-      "xr"
+      "websocket"
     ],
     "noDeprecatedFeatures": {
       "value": false,

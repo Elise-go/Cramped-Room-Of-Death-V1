@@ -1,17 +1,25 @@
 
 import { director, RenderRoot2D } from 'cc';
-import Singleton from 'db://assets/Base/Singleton';
-import { DEFAUT_DURATION, DrawManager } from '../Scripts/UI/DrawManager';
+import { DEFAULT_DURATION, DrawManager } from '../Scripts/UI/DrawManager';
 import { createUINode } from '../Utils';
+import ResourceManager from './ResourceManager';
 
 
-export default class FaderManager extends Singleton {
+export default class FaderManager {
+
+  private static _instance: FaderManager | null = null;
+
+  private constructor() {}
 
   static get Instance(){
-    return super.GetInstance<FaderManager>();
+    if (this._instance === null) {
+      this._instance = new FaderManager();
+    }
+
+    return this._instance;
   }
 
-  private _fader: DrawManager = null;
+  private _fader: DrawManager | null = null;
 
   get fader(){
     if(this._fader !== null){
@@ -32,12 +40,12 @@ export default class FaderManager extends Singleton {
 
   }
 
-  fadeIn(duration: number = DEFAUT_DURATION){
+  fadeIn(duration: number = DEFAULT_DURATION){
     // 此时拿到的 fader，其父节点已经是含有RenderRoot2D组件的了
     return this.fader.fadeIn(duration);
   }
 
-  fadeOut(duration: number = DEFAUT_DURATION){
+  fadeOut(duration: number = DEFAULT_DURATION){
     // 此时拿到的 fader，其父节点已经是含有RenderRoot2D组件的了
     return this.fader.fadeOut(duration);
   }
@@ -48,6 +56,5 @@ export default class FaderManager extends Singleton {
   }
   
 }
-
 
 

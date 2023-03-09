@@ -79,6 +79,7 @@ export enum DIRECTION_ENUM{
 }
 
 export enum ENTITY_STATE_ENUM{
+    // 共 12 种状态
     IDLE = 'IDLE',
     TURNLEFT = 'TURNLEFT',
     TURNRIGHT = 'TURNRIGHT',
@@ -109,21 +110,23 @@ export enum ENTITY_TYPE_ENUM{
     BURST = 'BURST',
     SMOKE = 'SMOKE',
 
+}
+
+/*********************关于Spikes的枚举 start***************************/
+export enum SPIKES_TYPE_ENUM{
     SPIKES_ONE = 'SPIKES_ONE',
     SPIKES_TWO = 'SPIKES_TWO',
     SPIKES_THREE = 'SPIKES_THREE',
     SPIKES_FOUR = 'SPIKES_FOUR',
-
 }
 
 export enum SPRIKES_TYPE_MAP_TOTAL_CLIPS_ENUM{ // 数字枚举具有双向映射的特点
-    // 每种尖刺类型对应有多少动画剪辑种类
+    // 每种尖刺类型对应有多少个动画剪辑种类
     SPIKES_ONE = 2,
     SPIKES_TWO = 3,
     SPIKES_THREE = 4,
     SPIKES_FOUR = 5,
 }
-
 
 
 export enum SPIKES_SHOW_ORDER_ENUM{
@@ -144,6 +147,7 @@ export enum SPRIKES_ORDER_MAP_NUMBER_ENUM{ // 数字枚举具有双向映射的�
     FOUR = 4,
     FIVE = 5,
 }
+/*********************关于Spikes的枚举 end***************************/
 
 export enum SHAKE_DIRECTION_ENUM{
     TOP = 'TOP',
@@ -153,6 +157,7 @@ export enum SHAKE_DIRECTION_ENUM{
 }
 
 export enum SCREEN_ENUM{
+    // 注意！要与场景的命名一致
     Loading = 'Loading',
     Start = 'Start',
     Battle = 'Battle'

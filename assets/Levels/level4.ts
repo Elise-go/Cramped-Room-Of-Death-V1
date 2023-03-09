@@ -210,6 +210,13 @@ const enemies: Array<IEntity> = [
     state: ENTITY_STATE_ENUM.IDLE,
     type: ENTITY_TYPE_ENUM.SKELETON_IRON,
   },
+  {
+    x: 3,
+    y: 1,
+    direction: DIRECTION_ENUM.BOTTOM,
+    state: ENTITY_STATE_ENUM.IDLE,
+    type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
+  },
 ];
 
 const spikes: Array<ISpikes> = [];

@@ -1,6 +1,5 @@
 import { IEntity, ILevel, ISpikes } from ".";
-import { DIRECTION_ENUM, ENTITY_STATE_ENUM, ENTITY_TYPE_ENUM, TILE_TYPE_ENUM } from "../Enums";
-
+import { DIRECTION_ENUM, ENTITY_STATE_ENUM, ENTITY_TYPE_ENUM, SPIKES_TYPE_ENUM, TILE_TYPE_ENUM } from "../Enums";
 const mapInfo = [
   [
     {
@@ -12,7 +11,15 @@ const mapInfo = [
       type: TILE_TYPE_ENUM.FLOOR,
     },
     {
-      src: 22,
+      src: 20,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 17,
+      type: TILE_TYPE_ENUM.CLIFF_CENTER,
+    },
+    {
+      src: 16,
       type: TILE_TYPE_ENUM.WALL_LEFT_TOP,
     },
     {
@@ -55,28 +62,36 @@ const mapInfo = [
       type: TILE_TYPE_ENUM.FLOOR,
     },
     {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
     },
     {
       src: 17,
       type: TILE_TYPE_ENUM.CLIFF_CENTER,
     },
     {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 17,
+      type: TILE_TYPE_ENUM.CLIFF_CENTER,
+    },
+    {
+      src: null,
+      type: null,
+    },
+    {
+      src: null,
+      type: null,
+    },
+    {
+      src: null,
+      type: null,
+    },
+    {
+      src: null,
+      type: null,
     },
     {
       src: 9,
@@ -98,30 +113,6 @@ const mapInfo = [
       type: TILE_TYPE_ENUM.FLOOR,
     },
     {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
       src: 9,
       type: TILE_TYPE_ENUM.WALL_ROW,
     },
@@ -129,106 +120,9 @@ const mapInfo = [
       src: 17,
       type: TILE_TYPE_ENUM.CLIFF_CENTER,
     },
-  ],
-
-  [
     {
       src: 9,
       type: TILE_TYPE_ENUM.WALL_ROW,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 9,
-      type: TILE_TYPE_ENUM.WALL_ROW,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-  ],
-
-  [
-    {
-      src: 9,
-      type: TILE_TYPE_ENUM.WALL_ROW,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 9,
-      type: TILE_TYPE_ENUM.WALL_ROW,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
-    },
-  ],
-
-  [
-    {
-      src: 9,
-      type: TILE_TYPE_ENUM.WALL_ROW,
-    },
-    {
-      src: 1,
-      type: TILE_TYPE_ENUM.FLOOR,
-    },
-    {
-      src: 17,
-      type: TILE_TYPE_ENUM.CLIFF_CENTER,
     },
     {
       src: 1,
@@ -270,24 +164,134 @@ const mapInfo = [
       type: TILE_TYPE_ENUM.FLOOR,
     },
     {
+      src: 15,
+      type: TILE_TYPE_ENUM.WALL_RIGHT_TOP,
+    },
+    {
+      src: 5,
+      type: TILE_TYPE_ENUM.WALL_COLUMN,
+    },
+    {
+      src: 14,
+      type: TILE_TYPE_ENUM.WALL_RIGHT_BOTTOM,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 16,
+      type: TILE_TYPE_ENUM.WALL_LEFT_TOP,
+    },
+    {
+      src: 5,
+      type: TILE_TYPE_ENUM.WALL_COLUMN,
+    },
+    {
+      src: 13,
+      type: TILE_TYPE_ENUM.WALL_LEFT_BOTTOM,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 19,
+      type: TILE_TYPE_ENUM.CLIFF_RIGHT,
+    },
+  ],
+
+  [
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
       src: 1,
       type: TILE_TYPE_ENUM.FLOOR,
     },
     {
       src: 1,
       type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
     },
     {
       src: 17,
       type: TILE_TYPE_ENUM.CLIFF_CENTER,
     },
     {
-      src: null,
-      type: null,
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
     },
     {
       src: 1,
       type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 17,
+      type: TILE_TYPE_ENUM.CLIFF_CENTER,
+    },
+  ],
+
+  [
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 1,
+      type: TILE_TYPE_ENUM.FLOOR,
+    },
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
+    },
+    {
+      src: 17,
+      type: TILE_TYPE_ENUM.CLIFF_CENTER,
+    },
+    {
+      src: 9,
+      type: TILE_TYPE_ENUM.WALL_ROW,
     },
     {
       src: 1,
@@ -329,8 +333,16 @@ const mapInfo = [
       type: TILE_TYPE_ENUM.WALL_COLUMN,
     },
     {
-      src: 23,
+      src: 14,
       type: TILE_TYPE_ENUM.WALL_RIGHT_BOTTOM,
+    },
+    {
+      src: 19,
+      type: TILE_TYPE_ENUM.CLIFF_RIGHT,
+    },
+    {
+      src: 21,
+      type: TILE_TYPE_ENUM.WALL_ROW,
     },
     {
       src: 1,
@@ -348,9 +360,9 @@ const mapInfo = [
 ];
 
 const player: IEntity = {
-  x: 7,
-  y: 7,
-  direction: DIRECTION_ENUM.LEFT,
+  x: 0,
+  y: 1,
+  direction: DIRECTION_ENUM.RIGHT,
   state: ENTITY_STATE_ENUM.IDLE,
   type: ENTITY_TYPE_ENUM.PLAYER,
 };
@@ -358,15 +370,15 @@ const player: IEntity = {
 const enemies: Array<IEntity> = [
   {
     x: 2,
-    y: 1,
-    direction: DIRECTION_ENUM.BOTTOM,
+    y: 5,
+    direction: DIRECTION_ENUM.TOP,
     state: ENTITY_STATE_ENUM.IDLE,
     type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
   },
   {
-    x: 2,
-    y: 4,
-    direction: DIRECTION_ENUM.RIGHT,
+    x: 4,
+    y: 9,
+    direction: DIRECTION_ENUM.TOP,
     state: ENTITY_STATE_ENUM.IDLE,
     type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
   },
@@ -374,51 +386,27 @@ const enemies: Array<IEntity> = [
 
 const spikes: Array<ISpikes> = [
   {
-    x: 1,
-    y: 3,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
-    clip: 0,
-  },
-  {
-    x: 3,
-    y: 3,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
-    clip: 0,
-  },
-  {
     x: 4,
-    y: 1,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
-    clip: 0,
-  },
-  {
-    x: 4,
-    y: 4,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
-    clip: 0,
-  },
-  {
-    x: 4,
-    y: 6,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
+    y: 2,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
   {
     x: 5,
     y: 3,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
+    type: SPIKES_TYPE_ENUM.SPIKES_TWO,
     clip: 0,
   },
   {
-    x: 6,
-    y: 2,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
+    x: 4,
+    y: 4,
+    type: SPIKES_TYPE_ENUM.SPIKES_THREE,
     clip: 0,
   },
   {
-    x: 6,
-    y: 6,
-    type: ENTITY_TYPE_ENUM.SPIKES_TWO,
+    x: 5,
+    y: 5,
+    type: SPIKES_TYPE_ENUM.SPIKES_ONE,
     clip: 0,
   },
 ];
@@ -426,7 +414,35 @@ const spikes: Array<ISpikes> = [
 const bursts: Array<IEntity> = [
   {
     x: 1,
+    y: 5,
+    state: ENTITY_STATE_ENUM.IDLE,
+    type: ENTITY_TYPE_ENUM.BURST,
+    direction: DIRECTION_ENUM.TOP,
+  },
+  {
+    x: 1,
     y: 6,
+    state: ENTITY_STATE_ENUM.IDLE,
+    type: ENTITY_TYPE_ENUM.BURST,
+    direction: DIRECTION_ENUM.TOP,
+  },
+  {
+    x: 1,
+    y: 7,
+    state: ENTITY_STATE_ENUM.IDLE,
+    type: ENTITY_TYPE_ENUM.BURST,
+    direction: DIRECTION_ENUM.TOP,
+  },
+  {
+    x: 1,
+    y: 8,
+    state: ENTITY_STATE_ENUM.IDLE,
+    type: ENTITY_TYPE_ENUM.BURST,
+    direction: DIRECTION_ENUM.TOP,
+  },
+  {
+    x: 1,
+    y: 9,
     state: ENTITY_STATE_ENUM.IDLE,
     type: ENTITY_TYPE_ENUM.BURST,
     direction: DIRECTION_ENUM.TOP,
@@ -439,43 +455,8 @@ const bursts: Array<IEntity> = [
     direction: DIRECTION_ENUM.TOP,
   },
   {
-    x: 3,
-    y: 6,
-    state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.BURST,
-    direction: DIRECTION_ENUM.TOP,
-  },
-  {
-    x: 4,
-    y: 2,
-    state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.BURST,
-    direction: DIRECTION_ENUM.TOP,
-  },
-  {
-    x: 4,
-    y: 5,
-    state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.BURST,
-    direction: DIRECTION_ENUM.TOP,
-  },
-  {
-    x: 5,
-    y: 4,
-    state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.BURST,
-    direction: DIRECTION_ENUM.TOP,
-  },
-  {
-    x: 5,
-    y: 5,
-    state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.BURST,
-    direction: DIRECTION_ENUM.TOP,
-  },
-  {
-    x: 6,
-    y: 5,
+    x: 2,
+    y: 7,
     state: ENTITY_STATE_ENUM.IDLE,
     type: ENTITY_TYPE_ENUM.BURST,
     direction: DIRECTION_ENUM.TOP,
@@ -483,14 +464,14 @@ const bursts: Array<IEntity> = [
 ];
 
 const door: IEntity = {
-  x: 0,
-  y: 1,
+  x: 6,
+  y: 9,
   direction: DIRECTION_ENUM.LEFT,
   state: ENTITY_STATE_ENUM.IDLE,
   type: ENTITY_TYPE_ENUM.DOOR,
 };
 
-const level17: ILevel = {
+const level19: ILevel = {
   mapInfo,
   player,
   enemies,
@@ -499,4 +480,4 @@ const level17: ILevel = {
   door,
 };
 
-export default level17;
+export default level19;

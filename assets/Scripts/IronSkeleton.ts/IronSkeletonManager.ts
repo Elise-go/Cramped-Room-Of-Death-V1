@@ -4,7 +4,7 @@ import { EnemyManager } from '../../Base/EnemyManager';
 import { IEntity } from '../../Levels';
 import { IronSkeletonStateMachine } from './IronSkeletonStateMachine';
 
-const { ccclass } = _decorator;
+const { ccclass, property } = _decorator;
 
 @ccclass('IronSkeletonManager')
 export class IronSkeletonManager extends EnemyManager {

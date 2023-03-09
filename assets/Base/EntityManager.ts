@@ -1,6 +1,6 @@
 
 
-import { _decorator, Component,Sprite, UITransform } from 'cc';
+import { _decorator, Component, Sprite, UITransform } from 'cc';
 import { DIRECTION_ENUM, DIRECTION_ORDER_ENUM, ENTITY_STATE_ENUM, ENTITY_TYPE_ENUM, PARAMS_NAME_ENUM } from '../Enums';
 import { IEntity } from '../Levels';
 import { randomByLen } from '../Utils';
@@ -12,46 +12,47 @@ const { ccclass, property } = _decorator;
 
 @ccclass('EntityManager')
 export class EntityManager extends Component {
-    id: string = randomByLen(12)
+    id: string = randomByLen(12);
+    fsm!: StateMachine; //具体值待定
+
     x: number = 0
     y: number = 0
-    fsm: StateMachine = null //具体值待定
+    type!: ENTITY_TYPE_ENUM;
+    private _direction!: DIRECTION_ENUM;
+    private _state!: ENTITY_STATE_ENUM
 
-    private _direction: DIRECTION_ENUM
-    private _state: ENTITY_STATE_ENUM
-    type: ENTITY_TYPE_ENUM
 
-    get direction(){
+    get direction() {
         return this._direction;
     }
 
-    set direction(newDirection:DIRECTION_ENUM){
+    set direction(newDirection: DIRECTION_ENUM) {
         this._direction = newDirection;
         this.fsm.setParamsValue(PARAMS_NAME_ENUM.DIRECTION, DIRECTION_ORDER_ENUM[this._direction]);
     }
 
-    get state(){
+    get state() {
         return this._state;
     }
 
-    set state(newState:ENTITY_STATE_ENUM){ // UI-数据分离
+    set state(newState: ENTITY_STATE_ENUM) { // UI-数据分离
         this._state = newState;
-        
-        this.fsm.setParamsValue(this._state, true);
+        this.fsm.run(this._state);
     }
 
-    async init(params: IEntity) {
-
+    init(params: IEntity) {
+        // 添加 Sprite组件并设置节点尺寸
         const sprite = this.node.addComponent(Sprite);
         sprite.sizeMode = Sprite.SizeMode.CUSTOM;
         const transform = this.node.getComponent(UITransform);
-        transform.setContentSize(TILE_WIDTH * 4, TILE_HEIGHT * 4);
+        transform!.setContentSize(TILE_WIDTH * 4, TILE_HEIGHT * 4);
 
         this.x = params.x;
         this.y = params.y;
-        this.type = params.type;
-        this.direction = params.direction;
+        this.direction = params.direction;//注意顺序：先给direction赋值后，再给state赋值
         this.state = params.state;
+        this.type = params.type;
+
     }
 
     update() {
@@ -59,10 +60,8 @@ export class EntityManager extends Component {
         // setPosition 的作用是将虚拟坐标映射到 Map上的实际坐标
         // !!!注意: 为了Entity在地图里的纵坐标为正，这里的纵坐标取相反值
         this.node.setPosition(this.x * TILE_WIDTH - 1.5 * TILE_WIDTH, - this.y * TILE_HEIGHT + 1.5 * TILE_HEIGHT);
-        
+
     }
 
-    onDestory(){ }
-
-
+    onDestroy() { }
 } 

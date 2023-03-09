@@ -203,11 +203,11 @@ const enemies: Array<IEntity> = [
     type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
   },
   {
-    x: 4,
+    x: 1,
     y: 3,
     direction: DIRECTION_ENUM.TOP,
     state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
+    type: ENTITY_TYPE_ENUM.SKELETON_IRON,
   },
 ];
 

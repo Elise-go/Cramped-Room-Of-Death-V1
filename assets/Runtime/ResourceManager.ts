@@ -1,15 +1,22 @@
 
-import Singleton from 'db://assets/Base/Singleton';
 import { resources, SpriteFrame } from 'cc';
 
-export default class ResourceManager extends Singleton {
+export default class ResourceManager {
+
+  private static _instance: ResourceManager| null = null
+
+  private constructor() {}
 
   static get Instance(){
-    // 重写 Singleton.ts中 GetInstance方法
-    return super.GetInstance<ResourceManager>();
+    if (this._instance === null) {
+      this._instance = new ResourceManager();
+    }
+
+    return this._instance;
   }
 
-  loadDir(path: string, type: typeof SpriteFrame = SpriteFrame){
+  LoadDir(path: string, type = SpriteFrame){
+
     return new Promise<SpriteFrame[]>((resolve,reject)=>{
       // 相同路径下的资源批量加载 resources.loadDir()
        resources.loadDir(path, type, function (err, assets) {
@@ -27,4 +34,6 @@ export default class ResourceManager extends Singleton {
 
 }
 
+
 }
+

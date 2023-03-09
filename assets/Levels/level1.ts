@@ -430,18 +430,18 @@ const mapInfo = [
 const player: IEntity = {
   x: 2,
   y: 8,
-  direction: DIRECTION_ENUM.TOP,
   state: ENTITY_STATE_ENUM.IDLE,
+  direction: DIRECTION_ENUM.TOP,
   type: ENTITY_TYPE_ENUM.PLAYER,
 };
 
 const enemies: Array<IEntity> = [
   {
-    x: 7,
+    x: 8,
     y: 6,
-    direction: DIRECTION_ENUM.TOP,
     state: ENTITY_STATE_ENUM.IDLE,
-    type: ENTITY_TYPE_ENUM.SKELETON_WOODEN,
+    direction: DIRECTION_ENUM.TOP,
+    type: ENTITY_TYPE_ENUM.SKELETON_IRON,
   }
 ];
 
@@ -452,8 +452,8 @@ const bursts: Array<IEntity> = [];
 const door: IEntity = {
   x: 7,
   y: 8,
-  direction: DIRECTION_ENUM.BOTTOM,
   state: ENTITY_STATE_ENUM.IDLE,
+  direction: DIRECTION_ENUM.BOTTOM,
   type: ENTITY_TYPE_ENUM.DOOR,
 };
 

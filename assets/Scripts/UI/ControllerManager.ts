@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('ControllerManager')
 export class ControllerManager extends Component {
-   handleCtrl(evt: Event, type: string){
-   EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL, type as CONTROLLER_ENUM);
+  handleCtrl(evt: Event, type: string) { // 此处 type参数即接收从编辑器里CustomEventData传入的字符串
+    EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL, [type as CONTROLLER_ENUM]);
   }
 }

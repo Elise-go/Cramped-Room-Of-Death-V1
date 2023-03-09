@@ -5,7 +5,7 @@ import { IEntity } from '../../Levels';
 import { SmokeStateMachine } from './SmokeStateMachine';
 
 
-const { ccclass } = _decorator;
+const { ccclass, property } = _decorator;
 
 
 @ccclass('SmokeManager')
@@ -17,10 +17,6 @@ export class SmokeManager extends EntityManager {
         await this.fsm.init();
         super.init(params);
  
-    }
-
-    onDestory(){
-        super.onDestroy();
     }
 
 }
