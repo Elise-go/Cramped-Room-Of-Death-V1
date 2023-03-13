@@ -21,7 +21,7 @@ export class TileMapManager extends Component {
             for (let j = 0; j < column.length; j++) {
                 const item = column[j]; // item为ITile类型
 
-                // 如果瓦片为空，怎不生成节点
+                // 如果瓦片为空，则不生成节点
                 if (item.src === null || item.type === null) {
                     continue;
                 }

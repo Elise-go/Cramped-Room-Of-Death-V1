@@ -373,7 +373,7 @@ export class PlayerManager extends EntityManager {
 
 
             // 判断player是否越过下边界
-            if (playerNextY > column - 1) {
+            if (playerNextY > row - 1) {
                 this.state = ENTITY_STATE_ENUM.BLOCKBACK;
                 return true;
             }
@@ -622,7 +622,7 @@ export class PlayerManager extends EntityManager {
 
 
             // 判断 player是否越过右边界
-            if (playerNextX > row - 1) {
+            if (playerNextX > column - 1) {
                 this.state = ENTITY_STATE_ENUM.BLOCKRIGHT;
                 return true;
 

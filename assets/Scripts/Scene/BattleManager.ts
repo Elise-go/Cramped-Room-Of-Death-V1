@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, director } from 'cc';
+import { _decorator, Component, Node, director, UITransform, resources } from 'cc';
 import { TileMapManager } from 'db://assets/Scripts/Tile/TileMapManager';
 import { createUINode } from 'db://assets/Utils';
 import DataManager, { IRecord } from 'db://assets/Runtime/DataManager';
@@ -37,6 +37,7 @@ export class BattleManager extends Component {
         EventManager.Instance.onUnclear(EVENT_ENUM.REVOKE_STEP, this.revoke, this);
         EventManager.Instance.onUnclear(EVENT_ENUM.RESTART_LEVEL, this.initLevel, this);
         EventManager.Instance.onUnclear(EVENT_ENUM.OUT_BATTLE, this.outBattle, this);
+
     }
 
     onDestroy() {
@@ -74,10 +75,8 @@ export class BattleManager extends Component {
             this.level = newLevel;
             DataManager.Instance.playerInfo = this.level.player;
             DataManager.Instance.mapInfo = this.level.mapInfo;
-            DataManager.Instance.mapRowCount = this.level.mapInfo.length || 0;
-            DataManager.Instance.mapColumnCount = this.level.mapInfo[0].length || 0;
-
-            this.stageAdaptPos();
+            DataManager.Instance.mapColumnCount = this.level.mapInfo.length || 0;
+            DataManager.Instance.mapRowCount = this.level.mapInfo[0].length || 0;
 
             // 注意：这里的渲染顺序决定了UI节点的遮挡关系
             await this.generateTileMap();
@@ -92,6 +91,7 @@ export class BattleManager extends Component {
             await this.generateEnemies();
             await this.generatePlayer();
 
+            this.stageAdaptPos();
             EventManager.Instance.on(EVENT_ENUM.PLAYER_MOVE_END, this.checkArrived, this);
 
             // 效果：等所有资源都加载完后，黑幕渐渐消失
@@ -118,8 +118,8 @@ export class BattleManager extends Component {
 
     stageAdaptPos() {
         const { mapRowCount, mapColumnCount } = DataManager.Instance;
-        const disX = (TILE_WIDTH * mapRowCount) / 2;
-        const disY = (TILE_HEIGHT * mapColumnCount) / 2 + 80;
+        const disX = (TILE_WIDTH * mapColumnCount) / 2;
+        const disY = (TILE_HEIGHT * mapRowCount) / 2 + 80;
         this.stage.setPosition(-disX, disY);
     }
 
