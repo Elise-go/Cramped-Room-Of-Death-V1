@@ -15,16 +15,8 @@ export class LoadingManager extends Component {
     label!: Label
 
     onLoad() {
-        resources.preloadDir('smoke');
-        resources.preloadDir('ironskeleton');
-        resources.preloadDir('tile');
-        resources.preloadDir('door');
-        resources.preloadDir('ctrl');
-        resources.preloadDir('woodenskeleton');
-        resources.preloadDir('spikes');
-        resources.preloadDir('burst');
 
-        resources.preloadDir('texture/player', (cur, total) => {
+        resources.preloadDir('texture', (cur, total) => {
             this.bar!.progress = cur / total;
             this.label.string = Math.floor(cur / total * 100) + ' %';
         }, () => {
