@@ -1,5 +1,5 @@
 # Cramped-Room-Of-Death-V2
-本游戏使用CocosCreator V3.7.1 制作，参考自SLI97用户复刻的Steam同名游戏《Cramped Room Of Death》，并在此基础上作了些修改  
+本游戏使用CocosCreator V3.6.2 制作，参考自SLI97用户复刻的Steam同名游戏《Cramped Room Of Death》，并在此基础上作了些修改  
 [参考来源](https://github.com/SLI97/cocos-cramped-room-of-death)  
 
 # 在线试玩
